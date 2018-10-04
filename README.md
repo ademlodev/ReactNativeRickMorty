@@ -1,1 +1,1 @@
-# ReactNativeRickMorty
+# React Native - Rick And Morty
