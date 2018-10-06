@@ -15,19 +15,13 @@ export function fetchEpisodesList() {
 export function fetchEipisodeCharacters(id) {
   const url = `/episode/${id}`;
   let characters = new Array();
-  console.log("url", url);
   return new Promise((resolve, reject) => {
     axios
       .get(url)
       .then(result => {
-        console.log("charactes", result.data.characters);
         characters = result.data.characters.map(fetchCharacter);
-        console.log("Promise characters", characters);
-
         Promise.all(characters).then(result => {
-          console.log("Promise all", result);
           const data = result.map(internalData => internalData.data);
-          console.log("Promise all data", data);
           resolve(data);
         });
       })

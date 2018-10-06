@@ -7,6 +7,7 @@
  */
 
 import React, { Component } from "react";
+import { TouchableOpacity, Text } from "react-native";
 import { Router, Scene, Stack } from "react-native-router-flux";
 import { Episodes, Characters, CharacterDetail } from "./sections";
 import * as api from "../api/";
@@ -23,9 +24,19 @@ const store = createStore(
   window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
 );
 
-/* const sceneDefaultStyles = {
+const sceneDefaultStyles = {
   navigationBarStyle: { backgroundColor: "rgb(216, 212, 212)" }
-}; */
+};
+
+const RightButton = props => (
+  <TouchableOpacity
+    style={{ padding: 10 }}
+    onPress={() => console.log("presionado boton add ")} // Actions.characterAdd()
+  >
+    <Text style={{ color: "black", fontWeight: "bold" }}>{"Añadir"}</Text>
+  </TouchableOpacity>
+);
+
 export default class App extends Component {
   componentWillMount() {
     api.configureAxios();
@@ -45,12 +56,13 @@ export default class App extends Component {
             <Scene
               key="characters"
               component={Characters}
-              // {...sceneDefaultStyles}
+              renderRightButton={RightButton}
+              {...sceneDefaultStyles}
             />
             <Scene
               key="characterDetail"
               component={CharacterDetail}
-              // {...sceneDefaultStyles}
+              {...sceneDefaultStyles}
             />
           </Stack>
         </Router>
