@@ -9,7 +9,13 @@
 import React, { Component } from "react";
 import { TouchableOpacity, Text } from "react-native";
 import { Router, Scene, Stack } from "react-native-router-flux";
-import { Episodes, Characters, CharacterDetail } from "./sections";
+import {
+  Episodes,
+  Characters,
+  CharacterDetail,
+  CharacterAdd
+} from "./sections";
+import { Actions } from "react-native-router-flux";
 import * as api from "../api/";
 import { createStore, applyMiddleware, combineReducers } from "redux";
 import { Provider, connect } from "react-redux";
@@ -31,9 +37,13 @@ const sceneDefaultStyles = {
 const RightButton = props => (
   <TouchableOpacity
     style={{ padding: 10 }}
-    onPress={() => console.log("presionado boton add ")} // Actions.characterAdd()
+    onPress={() =>
+      Actions.characterAdd({
+        title: "Add character"
+      })
+    }
   >
-    <Text style={{ color: "black", fontWeight: "bold" }}>{"Añadir"}</Text>
+    <Text style={{ color: "black", fontWeight: "bold" }}>{"Add"}</Text>
   </TouchableOpacity>
 );
 
@@ -50,8 +60,8 @@ export default class App extends Component {
             <Scene
               key="episodes"
               component={Episodes}
-              initial={true}
               hideNavBar={true}
+              initial={true}
             />
             <Scene
               key="characters"
@@ -62,6 +72,11 @@ export default class App extends Component {
             <Scene
               key="characterDetail"
               component={CharacterDetail}
+              {...sceneDefaultStyles}
+            />
+            <Scene
+              key="characterAdd"
+              component={CharacterAdd}
               {...sceneDefaultStyles}
             />
           </Stack>

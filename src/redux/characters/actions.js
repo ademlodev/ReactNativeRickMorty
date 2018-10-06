@@ -1,4 +1,5 @@
 import * as types from "./types";
+import { Actions } from "react-native-router-flux";
 
 export function setFetching(value) {
   return {
@@ -38,6 +39,35 @@ export function fetchEpisodeCharactersList() {
       })
       .catch(err => {
         dispatch(setFetching(false));
+      });
+  };
+}
+
+export function postEpisodeCharacter(data) {
+  return (dispatch, getState, api) => {
+    const episode = getState().episodes.item;
+    console.log("<Characters Action> episode: ", episode);
+    if (!data || !episode) {
+      return;
+    }
+
+    dispatch(setFetching(true));
+
+    const characterData = {
+      ...data,
+      episode: episode.url
+    };
+
+    api
+      .postEpisodeCharacter(characterData)
+      .then(result => {
+        dispatch(setFetching(false));
+        dispatch(fetchEpisodeCharactersList());
+        Actions.pop();
+      })
+      .catch(err => {
+        dispatch(setFetching(false));
+        console.log("<Characters Action> Error postEpisodeCharacter", err);
       });
   };
 }

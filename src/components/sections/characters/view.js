@@ -13,7 +13,7 @@ export default class extends Component {
   }
 
   _renderItem(item, index) {
-    console.log("<Characters> item: ", item);
+    //console.log("<Characters> item: ", item);
     return (
       <CharacterCell
         character={item}
@@ -45,7 +45,7 @@ export default class extends Component {
   }
 
   render() {
-    console.log("<Characters> this.props.list: ", this.props.list);
+    //console.log("<Characters> this.props.list: ", this.props.list);
     return (
       <View style={styles.container}>
         <FlatList

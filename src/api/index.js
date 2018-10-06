@@ -34,3 +34,12 @@ export function fetchEipisodeCharacters(id) {
 export function fetchCharacter(url) {
   return axios.get(url);
 }
+
+export function postEpisodeCharacter(data) {
+  console.log("Mando los datos con un post a la api para guardarlos.");
+  /* const url="/character"
+  return axios.post(url, data); */
+  return new Promise((resolve, reject) => {
+    resolve(true);
+  });
+}

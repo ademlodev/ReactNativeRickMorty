@@ -76,7 +76,7 @@ const mapDispatchToProps = (dispatch, props) => {
     onEpisodeTapped: character => {
       dispatch(EpisodesActions.setItem(character));
       Actions.characters({
-        title: "Ep " + character.id + ": " + character.name
+        title: "Episode: " + character.id
       });
     }
   };

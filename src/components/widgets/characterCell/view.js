@@ -10,7 +10,7 @@ export default class extends Component {
 
   render() {
     const { character } = this.props;
-    console.log("<CharacterCell> This props:", character);
+    //console.log("<CharacterCell> This props:", character);
     const image = character.image
       ? { uri: character.image }
       : require("../../../resources/RKepisodes.jpg");
