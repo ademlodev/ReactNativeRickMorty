@@ -1,11 +1,11 @@
 # React Native - Rick And Morty
 
-React native app that use Rick and Morty Api to show list of episodes and characters. You can "add" and edit characters (you can't persist data on Api)
+React native app that use Rick and Morty Api to show list of episodes and characters. You can "add" and "edit" characters (you can't persist data on Api)
 
 ## Features
 
 - This project use [React Native](https://facebook.github.io/react-native/)
-- Api used [Rcik and Morty Api](https://rickandmortyapi.com/)
+- Api used [Rick and Morty Api](https://rickandmortyapi.com/)
 - Use Redux
 - Use React-native-router-flux
 - Episode list
@@ -24,9 +24,9 @@ React native app that use Rick and Morty Api to show list of episodes and charac
 
 ![Edit Character](https://github.com/jgarciaolmeda/ReactNativeRickMorty/blob/master/screenshots/editcharacter.png)
 
-## Installations
+## Installation
 
-Clone the repository and execute the re
+Clone the repository and execute the next commands on bash
 
 ```bash
 $ git clone https://github.com/jgarciaolmeda/ReactNativeRickMorty.git
