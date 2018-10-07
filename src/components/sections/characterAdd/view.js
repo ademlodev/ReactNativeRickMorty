@@ -1,8 +1,16 @@
 import React, { Component } from "react";
-import { View, Text, TouchableOpacity, Image, Alert } from "react-native";
+import {
+  ScrollView,
+  View,
+  Text,
+  TouchableOpacity,
+  Image,
+  Alert
+} from "react-native";
 import { TextInput, Button } from "../../widgets";
 import styles from "./styles";
 import ImagePicker from "react-native-image-picker";
+import * as Colors from "../../../commons/colors";
 
 export default class extends Component {
   constructor(props) {
@@ -11,13 +19,17 @@ export default class extends Component {
     if (props.isEdit && props.character) {
       this.state = {
         name: props.character.name,
-        gender: props.character.gender,
+        status: props.character.status,
+        specie: props.character.specie,
+        location: props.character.location,
         image: { preview: { uri: props.character.image } }
       };
     } else {
       this.state = {
         name: "",
-        gender: "",
+        status: "",
+        specie: "",
+        location: "",
         image: null
       };
     }
@@ -69,8 +81,8 @@ export default class extends Component {
   }
 
   _validateForm() {
-    const { name, gender, image } = this.state;
-    if (name && gender && image) {
+    const { name, status, specie, location, image } = this.state;
+    if (name && status && specie && location && image) {
       return true;
     } else {
       return false;
@@ -79,7 +91,7 @@ export default class extends Component {
 
   _onSubmit() {
     if (this._validateForm()) {
-      const { name, gender, image } = this.state;
+      const { name, status, specie, location, image } = this.state;
       if (this.props.isEdit) {
         const characterId = this.props.character.id;
         const imageData = this.state.image
@@ -87,15 +99,19 @@ export default class extends Component {
           : {};
         const data = {
           ...imageData,
-          nombre: name,
-          edad: gender
+          name: name,
+          status: status,
+          specie: specie,
+          location: location
         };
         // FUNCION PARA HACER PATCH
         //this.props.onSubmitCharacter(data)
       } else {
         const data = {
-          nombre: name,
-          edad: gender,
+          name: name,
+          status: status,
+          specie: specie,
+          location: location,
           image: image
         };
         this.props.onSubmitCharacter(data);
@@ -107,36 +123,68 @@ export default class extends Component {
 
   render() {
     return (
-      <View style={styles.container}>
-        <View style={{ paddingTop: 10 }}>
+      <ScrollView style={styles.container}>
+        <View style={styles.firstElement}>
           <TextInput
-            label={"Character Name:"}
+            label={"Name:"}
             placeholder={"name"}
+            placeHolderColor={Colors.secondaryText}
             value={this.state.name}
             onChangeText={name => this.setState({ name })}
-            inputStyle={{ backgroundColor: "white" }}
-            labelStyle={{ padding: 10 }}
-            containerStyle={{ padding: 20 }}
+            inputStyle={styles.textInput}
+            labelStyle={styles.textLabel}
+            containerStyle={styles.textContainer}
           />
         </View>
-        <View style={{}}>
+        <View>
           <TextInput
-            label={"Character gender:"}
-            placeholder={"gender"}
-            value={this.state.gender}
-            onChangeText={gender => this.setState({ gender })}
-            inputStyle={{ backgroundColor: "white" }}
-            labelStyle={{ padding: 10 }}
-            containerStyle={{ padding: 20 }}
+            label={"Status:"}
+            placeholder={"status"}
+            placeHolderColor={Colors.secondaryText}
+            value={this.state.status}
+            onChangeText={status => this.setState({ status })}
+            inputStyle={styles.textInput}
+            labelStyle={styles.textLabel}
+            containerStyle={styles.textContainer}
           />
         </View>
-        <View style={{ paddingHorizontal: 20, paddingBottom: 20 }}>
+        <View>
+          <TextInput
+            label={"Specie:"}
+            placeholder={"specie"}
+            placeHolderColor={Colors.secondaryText}
+            value={this.state.specie}
+            onChangeText={specie => this.setState({ specie })}
+            inputStyle={styles.textInput}
+            labelStyle={styles.textLabel}
+            containerStyle={styles.textContainer}
+          />
+        </View>
+        <View>
+          <TextInput
+            label={"Location:"}
+            placeholder={"location"}
+            placeHolderColor={Colors.secondaryText}
+            value={this.state.location}
+            onChangeText={location => this.setState({ location })}
+            inputStyle={styles.textInput}
+            labelStyle={styles.textLabel}
+            containerStyle={styles.textContainer}
+          />
+        </View>
+        <View style={styles.spaceBetweenElements}>
           {this._renderImageInput()}
         </View>
-        <View style={{ padding: 20 }}>
-          <Button label="Guardar" onPress={() => this._onSubmit()} />
+
+        <View style={styles.spaceBetweenElements}>
+          <Button
+            label="Save"
+            onPress={() => this._onSubmit()}
+            containerStyle={styles.buttonContainer}
+            buttonStyle={styles.button}
+          />
         </View>
-      </View>
+      </ScrollView>
     );
   }
 }

@@ -1,13 +1,13 @@
 import React from "react";
 import { View, TextInput, Text } from "react-native";
 import styles from "./styles";
-import * as Colors from "../../../commons/colors";
 
 export default class extends React.Component {
   static defaultProps = {
     label: "",
     value: "",
     placeholder: "",
+    placeholderTextColor: "",
     onChangeText: () => {},
     inputStyle: {},
     labelStyle: {},
@@ -25,7 +25,7 @@ export default class extends React.Component {
           value={this.props.value}
           style={[styles.textInput, this.props.inputStyle]}
           placeholder={this.props.placeholder}
-          placeholderTextColor={Colors.main}
+          placeholderTextColor={this.props.placeHolderColor}
         />
       </View>
     );

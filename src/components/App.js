@@ -20,18 +20,26 @@ import * as api from "../api/";
 import { createStore, applyMiddleware, combineReducers } from "redux";
 import { Provider, connect } from "react-redux";
 import thunk from "redux-thunk";
-
+import * as Colors from "../commons/colors/";
 import * as reducers from "../redux/";
 
 const reducer = combineReducers(reducers);
 const store = createStore(
   reducer,
-  applyMiddleware(thunk.withExtraArgument(api)),
-  window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
+  applyMiddleware(thunk.withExtraArgument(api))
 );
+/**
+ * Para debug en Chrome con Dev Redux tool añadir al store como parametro en createStore
+ * ,window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
+ **/
 
 const sceneDefaultStyles = {
-  navigationBarStyle: { backgroundColor: "rgb(216, 212, 212)" }
+  navigationBarStyle: {
+    backgroundColor: Colors.primary
+  },
+  backButtonTintColor: Colors.primaryText,
+  backButtonTextStyle: { color: Colors.primaryText },
+  titleStyle: { color: Colors.primaryText }
 };
 
 const RightButton = props => (
@@ -43,7 +51,11 @@ const RightButton = props => (
       })
     }
   >
-    <Text style={{ color: "black", fontWeight: "bold" }}>{"Add"}</Text>
+    <Text
+      style={{ color: Colors.primaryText, fontSize: 20, fontWeight: "300" }}
+    >
+      {"Add"}
+    </Text>
   </TouchableOpacity>
 );
 

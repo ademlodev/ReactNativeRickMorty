@@ -29,17 +29,7 @@ class Episodes extends Component {
       return null;
     } else {
       return (
-        <View
-          style={{
-            position: "absolute",
-            top: 0,
-            left: 0,
-            bottom: 0,
-            right: 0,
-            alignItems: "center",
-            justifyContent: "center"
-          }}
-        >
+        <View style={styles.activity}>
           <ActivityIndicator size="large" animating={this.props.isFetching} />
         </View>
       );
@@ -47,10 +37,11 @@ class Episodes extends Component {
   }
 
   render() {
+    const { list } = this.props;
     return (
       <View style={styles.container}>
         <FlatList
-          data={this.props.list}
+          data={list}
           renderItem={value => this._renderItem(value)}
           keyExtractor={(v, i) => "cell" + i}
           extraData={this.props}
@@ -62,7 +53,6 @@ class Episodes extends Component {
 }
 
 const mapStateToProps = state => {
-  console.log("state", state);
   return {
     isFetching: state.episodes.isFetching,
     list: state.episodes.list

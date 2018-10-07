@@ -1,17 +1,19 @@
 import { StyleSheet } from "react-native";
-import * as Colors from "../../../commons/colors/";
+
+const primary = "rgb(255, 255, 255)"; // White
+const secondaryText = "rgb(24, 24, 24)"; // Black
 
 export default StyleSheet.create({
   label: {
-    color: "black",
-    fontSize: 16,
+    color: secondaryText,
+    fontSize: 20,
     marginBottom: 10
   },
   textInput: {
-    color: "black",
-    fontSize: 18,
+    color: secondaryText,
+    fontSize: 20,
     borderWidth: 1,
-    borderColor: Colors.main,
+    borderColor: primary,
     paddingVertical: 6,
     paddingHorizontal: 10,
     borderRadius: 10

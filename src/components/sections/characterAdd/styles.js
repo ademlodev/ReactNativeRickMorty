@@ -4,11 +4,20 @@ import * as Colors from "../../../commons/colors";
 export default StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "rgb(216, 212, 212)"
+    backgroundColor: Colors.secondary
   },
+  firstElement: { paddingTop: 10 },
+  spaceBetweenElements: { padding: 20 },
+  textInput: { backgroundColor: Colors.primaryText, fontSize: 20 },
+  textLabel: {
+    padding: 10,
+    fontSize: 20,
+    color: Colors.primaryText
+  },
+  textContainer: { paddingHorizontal: 20 },
   imageContainer: {
     borderWidth: 1,
-    borderColor: Colors.main,
+    borderColor: Colors.primary,
     borderRadius: 20,
     height: 200,
     width: "100%"
@@ -19,12 +28,22 @@ export default StyleSheet.create({
     height: "100%"
   },
   imageText: {
-    color: "white",
-    fontWeight: "bold",
+    borderColor: Colors.primary,
+    color: Colors.primaryText,
+    fontSize: 20,
+    fontWeight: "600",
     position: "absolute",
     top: "46%",
     textAlign: "center",
     left: 0,
     right: 0
+  },
+  buttonContainer: {
+    backgroundColor: Colors.accent,
+    borderRadius: 20
+  },
+  button: {
+    fontSize: 20,
+    color: Colors.primaryText
   }
 });

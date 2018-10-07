@@ -17,9 +17,9 @@ export default class extends Component {
         style={styles.cellContainer}
       >
         <Image source={image} style={styles.imageCell} resizeMode={"cover"} />
-        <View>
-          <Text style={styles.textCell}>Episode {episode.id}:</Text>
-          <Text>{episode.name}</Text>
+        <View style={styles.textCell}>
+          <Text style={styles.textPrimaryCell}>Episode {episode.id}:</Text>
+          <Text style={styles.textSecondCell}>{episode.name}</Text>
         </View>
       </TouchableOpacity>
     );

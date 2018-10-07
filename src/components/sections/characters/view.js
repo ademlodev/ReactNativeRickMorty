@@ -13,11 +13,12 @@ export default class extends Component {
   }
 
   _renderItem(item, index) {
-    //console.log("<Characters> item: ", item);
+    console.log("<Characters> renderItem -> index: ", index);
     return (
       <CharacterCell
         character={item}
         onCharacterPress={character => this._onCharacterTapped(character)}
+        index={index}
       />
     );
   }
@@ -45,12 +46,13 @@ export default class extends Component {
   }
 
   render() {
-    //console.log("<Characters> this.props.list: ", this.props.list);
+    console.log("<Characters> Render -> this.props.list: ", this.props.list);
+    const { list } = this.props;
     return (
       <View style={styles.container}>
         <FlatList
-          data={this.props.list}
-          renderItem={(item, index) => this._renderItem(item.item, index)}
+          data={list}
+          renderItem={({ item, index }) => this._renderItem(item, index)}
           keyExtractor={(v, i) => "cell" + i}
           // extraData={this.props}
         />
