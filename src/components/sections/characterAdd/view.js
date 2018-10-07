@@ -20,15 +20,15 @@ export default class extends Component {
       this.state = {
         name: props.character.name,
         status: props.character.status,
-        specie: props.character.specie,
-        location: props.character.location,
+        species: props.character.species,
+        location: props.character.location.name,
         image: { preview: { uri: props.character.image } }
       };
     } else {
       this.state = {
         name: "",
         status: "",
-        specie: "",
+        species: "",
         location: "",
         image: null
       };
@@ -81,8 +81,8 @@ export default class extends Component {
   }
 
   _validateForm() {
-    const { name, status, specie, location, image } = this.state;
-    if (name && status && specie && location && image) {
+    const { name, status, species, location, image } = this.state;
+    if (name && status && species && location && image) {
       return true;
     } else {
       return false;
@@ -91,7 +91,7 @@ export default class extends Component {
 
   _onSubmit() {
     if (this._validateForm()) {
-      const { name, status, specie, location, image } = this.state;
+      const { name, status, species, location, image } = this.state;
       if (this.props.isEdit) {
         const characterId = this.props.character.id;
         const imageData = this.state.image
@@ -101,7 +101,7 @@ export default class extends Component {
           ...imageData,
           name: name,
           status: status,
-          specie: specie,
+          species: species,
           location: location
         };
         // FUNCION PARA HACER PATCH
@@ -110,7 +110,7 @@ export default class extends Component {
         const data = {
           name: name,
           status: status,
-          specie: specie,
+          species: species,
           location: location,
           image: image
         };
@@ -150,11 +150,11 @@ export default class extends Component {
         </View>
         <View>
           <TextInput
-            label={"Specie:"}
-            placeholder={"specie"}
+            label={"Species:"}
+            placeholder={"species"}
             placeHolderColor={Colors.secondaryText}
-            value={this.state.specie}
-            onChangeText={specie => this.setState({ specie })}
+            value={this.state.species}
+            onChangeText={species => this.setState({ species })}
             inputStyle={styles.textInput}
             labelStyle={styles.textLabel}
             containerStyle={styles.textContainer}

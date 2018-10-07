@@ -8,16 +8,21 @@ React native app that use Rick and Morty Api to show list of episodes and charac
 - Api used [Rcik and Morty Api](https://rickandmortyapi.com/)
 - Use Redux
 - Use React-native-router-flux
+- Episode list
+- Character of Episode list
+- Add and Edit character (no persist)
 
 ## Screenshoots
 
-![Episode List](https://github.com/jgarciaolmeda/ReactNativeRickMorty/blob/master/screenshots/episode%20list.png)
+![Episode List](https://github.com/jgarciaolmeda/ReactNativeRickMorty/blob/master/screenshots/episode_list.png)
 
-![Character List](https://github.com/jgarciaolmeda/ReactNativeRickMorty/blob/master/screenshots/charactes%20list.png)
+![Character List](https://github.com/jgarciaolmeda/ReactNativeRickMorty/blob/master/screenshots/charactes_list.png)
 
-![Character Detail](https://github.com/jgarciaolmeda/ReactNativeRickMorty/blob/master/screenshots/character%20detail.png)
+![Character Detail](https://github.com/jgarciaolmeda/ReactNativeRickMorty/blob/master/screenshots/character_detail.png)
 
-![Character Add or Edit](https://github.com/jgarciaolmeda/ReactNativeRickMorty/blob/master/screenshots/add%20and%20edit.png)
+![Add Character](https://github.com/jgarciaolmeda/ReactNativeRickMorty/blob/master/screenshots/addcharacter.png)
+
+![Edit Character](https://github.com/jgarciaolmeda/ReactNativeRickMorty/blob/master/screenshots/editcharacter.png)
 
 ## Installations
 
@@ -46,4 +51,4 @@ $ react-native run-android #To start on Android
 
 - Option 2: Use Expo
 
-Need to follow this [instructions](https://facebook.github.io/react-native/docs/getting-started.html#running-your-react-native-application)
+You need to follow this [instructions](https://facebook.github.io/react-native/docs/getting-started.html#running-your-react-native-application)

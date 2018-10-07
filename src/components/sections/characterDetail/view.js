@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { ScrollView, View, Text, Animated } from "react-native";
 import { Button } from "../../widgets/";
 import styles from "./styles";
+import { Actions } from "react-native-router-flux";
 
 export default class extends Component {
   constructor(props) {
@@ -45,7 +46,7 @@ export default class extends Component {
           <Text style={styles.textDesc}>{character.name}</Text>
           <Text style={styles.textTitle}>{"Status: "}</Text>
           <Text style={styles.textDesc}>{character.status}</Text>
-          <Text style={styles.textTitle}>{"Specie: "}</Text>
+          <Text style={styles.textTitle}>{"Species: "}</Text>
           <Text style={styles.textDesc}>{character.species}</Text>
           <Text style={styles.textTitle}>{"Location: "}</Text>
           <Text style={styles.textDesc}>{character.location.name}</Text>
@@ -62,7 +63,13 @@ export default class extends Component {
           <View style={{ marginHorizontal: 40, marginVertical: 10 }}>
             <Button
               label={"Edit"}
-              onPress={() => console.log("Presionado editar")}
+              onPress={() =>
+                Actions.characterAdd({
+                  title: "Edit character",
+                  character,
+                  isEdit: true
+                })
+              }
               containerStyle={styles.buttonContainer}
               buttonStyle={styles.button}
             />
